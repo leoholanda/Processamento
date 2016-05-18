@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+
+<head>
+<title>Cadastro de usuário</title>
+</head>
+
+<section layout:fragment="menu">
+	<ul id="menu-top" class="nav navbar-nav navbar-right">
+		<li>
+			<a href="/processamento/index">
+				<span class="glyphicon glyphicon-home"></span> Início
+			</a>
+		</li>
+		<li>
+			<a class="menu-top-active" href="/usuario/novo">
+				<span class="glyphicon glyphicon-user"></span> Usuário
+			</a>
+		</li>
+		<li>
+			<a href=""><span class="glyphicon glyphicon-off"></span>
+				Sair</a>
+		</li>
+	</ul>
+</section>
+
+<section layout:fragment="conteudo">
+
+	<form class="form-horizontal" method="POST" action="/usuario">
+
+		<!-- 		message -->
+		<div class="alert alert-success"
+			th:if="${!#strings.isEmpty(mensagem)}">
+			<span th:text="${mensagem}"></span>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">
+				<span class="glyphicon glyphicon-user"></span> Novo Usuário</h1>
+				<a class="btn btn-primary aw-link-panel" href="/usuario">
+				<span class="glyphicon glyphicon-search"></span> Pesquisa usuário</a>
+				</div>
+			</div>
+
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="matricula" class="col-sm-2 control-label">Matrícula</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="matricula" name="matricula" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="nome" class="col-sm-2 control-label">Nome</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="nome" name="nome" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+							Salvar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+</html>
