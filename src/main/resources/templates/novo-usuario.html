@@ -8,24 +8,7 @@
 <title>Cadastro de usuário</title>
 </head>
 
-<section layout:fragment="menu">
-	<ul id="menu-top" class="nav navbar-nav navbar-right">
-		<li>
-			<a href="/processamento/index">
-				<span class="glyphicon glyphicon-home"></span> Início
-			</a>
-		</li>
-		<li>
-			<a class="menu-top-active" href="/usuario/novo">
-				<span class="glyphicon glyphicon-user"></span> Usuário
-			</a>
-		</li>
-		<li>
-			<a href=""><span class="glyphicon glyphicon-off"></span>
-				Sair</a>
-		</li>
-	</ul>
-</section>
+<section layout:include="menu"></section>
 
 <section layout:fragment="conteudo">
 
@@ -40,13 +23,12 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="clearfix">
-				<h1 class="panel-title aw-titulo-panel">
-				<span class="glyphicon glyphicon-user"></span> Novo Usuário</h1>
-				<a class="btn btn-primary aw-link-panel" href="/usuario">
-				<span class="glyphicon glyphicon-search"></span> Pesquisa usuário</a>
+					<h1 class="panel-title aw-titulo-panel">
+					<span class="glyphicon glyphicon-user"></span> Novo Usuário</h1>
+					<a class="btn btn-primary aw-link-panel" href="/usuario">
+					<span class="glyphicon glyphicon-search"></span> Pesquisar usuário</a>
 				</div>
 			</div>
-
 
 			<div class="panel-body">
 				<div class="form-group">

@@ -3,21 +3,13 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<section class="menu-section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="navbar-collapse collapse ">
-					<ul id="menu-top" class="nav navbar-nav navbar-right">
-						<li><a class="menu-top-active" href="index.html">Home</a></li>
-						<li><a href="/usuario">Usuários</a></li>
-						<li><a href="">opção 3</a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</div>
+<section layout:fragment="menu">
+	<ul id="menu-top" class="nav navbar-nav navbar-right">
+		<li><a href="/processamento/index"> <span class="glyphicon glyphicon-dashboard"></span> Início </a></li>
+		<li><a href="/usuario/novo"> <span class="glyphicon glyphicon-user"></span> Usuário	</a></li>
+		<li><a href="/setor/novo"> <span class="glyphicon glyphicon-home"></span> Setor</a></li>
+		<li><a href="/processamento"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
+	</ul>
 </section>
 
 

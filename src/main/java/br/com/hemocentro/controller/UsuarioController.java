@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.hemocentro.model.Usuario;
-import br.com.hemocentro.repository.UsuarioRepository;
+import br.com.hemocentro.repository.IUsuarioRepository;
 
 @Controller
 @RequestMapping("/usuario")
@@ -22,7 +22,7 @@ public class UsuarioController {
 	private static final String CADASTRO_VIEW = "novo-usuario";
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private IUsuarioRepository usuarioRepository;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
