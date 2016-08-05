@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +23,7 @@ import br.com.hemocentro.repository.ISetorRepository;
 public class SetorController {
 	
 	private static final String NEW_SETOR = "setor/novo-setor";
+	private static final String SEARCH_SETOR = "setor/pesquisa-setor";
 	
 	@Autowired
 	private ISetorRepository setorRepository;
@@ -30,6 +32,15 @@ public class SetorController {
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView(NEW_SETOR);
 		mv.addObject(new Setor());
+		return mv;
+	}
+	
+	@RequestMapping("/setores")
+	public ModelAndView allSetores(Setor setor) {
+		// TODO: Lista de setores
+		List<Setor> setores = setorRepository.orderByNome();
+		ModelAndView mv = new ModelAndView(SEARCH_SETOR);
+		mv.addObject("setores", setores);
 		return mv;
 	}
 
@@ -49,6 +60,14 @@ public class SetorController {
 			errors.rejectValue("dataVencimento", null, e.getMessage());
 			return NEW_SETOR;
 		}
+	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView editar(@PathVariable("codigo") Setor setor) {
+		// TODO: Edita setor
+		ModelAndView mv = new ModelAndView(NEW_SETOR);
+		mv.addObject(setor);
+		return mv;
 	}
 	
 	@ModelAttribute("unidades")

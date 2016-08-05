@@ -89,9 +89,9 @@ header {
    LOGO SECTION STYLES
  ============================================================ */
 .left-div {
-    padding-left: 30px;
-    margin-top: 40px;
-    margin-bottom: 30px;
+    padding-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .navbar-brand {
@@ -313,7 +313,9 @@ footer {
     background-color: #c32f10;
 }
 
-
+/*==============================================
+    STYLES CREATED BY ME    
+ =============================================*/
 
 .navbar-brand {
 	padding-top: 12px;
@@ -336,4 +338,16 @@ footer {
 .aw-titulo-panel {
 	float: left;
 	padding-top: 8px;
+}
+
+/* efeito a hover */
+
+
+.effect:hover {
+	opacity: 200.0;
+	color: #aacac7;
+	-webkit-transition-duration: .10s;
+	-moz-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
 }
