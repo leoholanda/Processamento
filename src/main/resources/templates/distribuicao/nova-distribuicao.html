@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+
+<head>
+	<title>Distribuir Sangue</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<form class="form-horizontal" method="POST" action="/distribuicao" th:object="${bolsa}">
+		
+		<div layout:include="mensagem"></div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title aw-titulo-panel"><span class="glyphicon glyphicon-home"></span> Distribuir Sangue</h1>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<input type="hidden" th:field="*{codigo}"/>
+			
+				<div class="form-group">
+					<label for="codigo" class="col-sm-2 control-label">Código</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="codigo" th:field="*{codigo}" disabled="disabled"/>
+					</div>
+				</div>
+								
+				<div class="form-group">
+					<label for="tipo" class="col-sm-2 control-label">Tipo Sanguineo</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="tipo" th:field="*{tipoSanguineo.descricao}" disabled="disabled"/>
+					</div>
+				</div>
+								
+				<div class="form-group">
+					<label for="setor" class="col-sm-2 control-label">Informe o setor de destino</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="setor" th:field="*{setor}">
+							<option value="">Informe o setor de destino</option>
+							<option th:each="setor : ${setores}" th:value="${{setor}}" th:text="${setor.nome}"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+							Salvar
+						</button>
+						
+						<a th:href="@{/distribuicao}" type="submit" class="btn btn-danger" th:if="*{not #strings.isEmpty(codigo)}">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							Cancelar
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+</section>
+</html>

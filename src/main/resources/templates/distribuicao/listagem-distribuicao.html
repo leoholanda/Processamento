@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+
+<head>
+<title>Pesquisa Bolsa</title>
+</head>
+
+<section layout:fragment="conteudo">
+	<div class="table-responsive col-md-12">
+
+		<div class="text-center alert alert-success"
+			th:if="${!#strings.isEmpty(mensagem)}">
+			<span th:text="${mensagem}"></span>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title pull-left aw-titulo-panel">
+						<span class="glyphicon glyphicon-tint"></span> Sangue <label
+							class="text-blue"> - Distribuição</label>
+					</h1>
+					<a class="btn btn-primary aw-link-panel" th:href="@{/bolsa}">
+						<span class="glyphicon glyphicon-record"></span> Hemacias </a> 
+					<a class="btn btn-primary aw-link-panel" th:href="@{/bolsa}">
+						<span class="glyphicon glyphicon-asterisk"></span> Plaquetas
+					</a> 
+					<a class="btn btn-primary aw-link-panel" th:href="@{/bolsa}">
+						<span class="glyphicon glyphicon-adjust"></span> Plasma
+					</a>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<form method="GET" class="form-horizontal">
+					<div class="form-group">
+						<div class="col-sm-4">
+							<div class="input-group">
+								<input class="form-control" placeholder="Digite o código que procura"
+								autofocus="autofocus"></input>
+								<span class="input-group-btn">
+									<button type="submit" class="btn btn-default form-control">
+										<i class="glyphicon glyphicon-search"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</form>
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th class="col-md-2">Código</th>
+							<th>Nome</th>
+							<th>Setor Atual</th>
+							<th>Situação</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="bolsa : ${bolsas}">
+							<td th:text="${bolsa.codigo}"></td>
+							<td th:text="${{bolsa.tipoSanguineo.descricao}}"></td>
+							<td th:text="${bolsa.setor.nome}"></td>
+							<td><span class="label label-warning"
+								th:text="${bolsa.situacao.descricao}"></span></td>
+							<td><a class="btn btn-xs btn-primary"
+										th:href="@{/distribuicao/{codigo}(codigo=${bolsa.codigo})}"
+										title="Distribuir sangue" rel="tooltip" data-placemet="top">
+										<i class="glyphicon glyphicon-retweet"></i> Distribuir
+								</a>
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="6" th:if="${bolsas.empty}">Nenhum bolsa
+								encontrado</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
+
+</html>

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.hemocentro.model.Setor;
 import br.com.hemocentro.model.TipoSanguineo;
+import br.com.hemocentro.repository.IBolsaRepository;
 import br.com.hemocentro.repository.ISetorRepository;
 
 @Controller
@@ -20,6 +21,9 @@ public class IndexController {
 	
 	@Autowired
 	private ISetorRepository setorRepository;
+	
+	@Autowired
+	private IBolsaRepository bolsaRepository;
 		
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView("index");
@@ -30,7 +34,7 @@ public class IndexController {
 	@RequestMapping("/index")
 	public ModelAndView allTipoSanguineo(TipoSanguineo tipoSanguineo) {
 		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("tipoSanguineos", todosTipos());
+		mv.addObject("estoque", bolsaRepository.countEstoqueBolsas());
 		return mv;
 	}
 	
@@ -53,5 +57,52 @@ public class IndexController {
 	public List<TipoSanguineo> todosTipos() {
 		return Arrays.asList(TipoSanguineo.values());
 	}
-
+	
+	@ModelAttribute("totalAPositivo")
+	public Long totalAPositivo() {
+		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.A_POSITIVO);
+		return total;
+	}
+	
+	@ModelAttribute("totalANegativo")
+	public Long totalANegativo() {
+		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.A_NEGATIVO);
+		return total;
+	}
+	
+	@ModelAttribute("totalBPositivo")
+	public Long totalBPositivo() {
+		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.B_POSITIVO);
+		return total;
+	}
+	
+	@ModelAttribute("totalBNegativo")
+	public Long totalBNegativo() {
+		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.B_NEGATIVO);
+		return total;
+	}
+	
+	@ModelAttribute("totalABPositivo")
+	public Long totalABPositivo() {
+		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.AB_POSITIVO);
+		return total;
+	}
+	
+	@ModelAttribute("totalABNegativo")
+	public Long totalABNegativo() {
+		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.AB_NEGATIVO);
+		return total;
+	}
+	
+	@ModelAttribute("totalOPositivo")
+	public Long totalOPositivo() {
+		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.O_POSITIVO);
+		return total;
+	}
+	
+	@ModelAttribute("totalONegativo")
+	public Long totalONegativo() {
+		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.O_NEGATIVO);
+		return total;
+	}
 }

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+
+<head>
+	<title>Cadastro de Bolsa</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<form class="form-horizontal" method="POST" action="/bolsa" th:object="${bolsa}">
+		
+		<div layout:include="mensagem"></div>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title aw-titulo-panel"><span class="glyphicon glyphicon-tint"></span> Bolsa de Sangue</h1>
+					<a class="btn btn-primary aw-link-panel" th:href="@{/bolsa/bolsas}">
+					<span class="glyphicon glyphicon-search"></span> Pesquisar bolsa</a>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="codigo" class="col-sm-2 control-label">Código</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="codigo" th:field="*{codigo}"/>
+					</div>
+				</div>
+								
+				<div class="form-group">
+					<label for="tipo" class="col-sm-2 control-label">Tipo Sanguineo</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="tipo" th:field="*{tipoSanguineo}">
+							<option value="">Selecione o tipo sanguineo</option>
+							<option th:each="tipo : ${tiposSanguineos}"
+								th:value="${tipo}" th:text="${tipo.descricao}"></option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="setor" class="col-sm-2 control-label">Setor</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="setor" th:field="*{setor}">
+							<option value="">Selecione o setor</option>
+							<option th:each="setor : ${setores}" th:value="${{setor}}" th:text="${setor.nome}"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+							Salvar
+						</button>
+						
+						<a th:href="@{/bolsa/bolsas}" type="submit" class="btn btn-danger" th:if="*{not #strings.isEmpty(codigo)}">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+							Cancelar
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+</section>
+</html>

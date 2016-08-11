@@ -17,52 +17,60 @@
 			Processamento
 		</h1>
 
-		<table class="table table-striped table-bordered table-hover">
+		<table class="table table-striped table-bordered">
 			<thead>
 				<tr>
 					<th>Tipagem/Fator</th>
 					<th class="col-md-2">Quantidade</th>
-					<th class="col-md-2 text-center">%</th>
 					<th class="col-md-2">Nível</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
+					<td>A+</td>
+					<td th:text="${totalAPositivo}"></td>
+					<td><a href="#" class="btn btn-xs btn-success">Ótimo</a></td>
+				</tr>
+				<tr>
+					<td>A-</td>
+					<td th:text="${totalANegativo}"></td>
+					<td><a href="#" class="btn btn-xs btn-success">Ótimo</a></td>
+				</tr>
+				<tr>
+					<td>B+</td>
+					<td th:text="${totalBPositivo}"></td>
+					<td><label class="btn btn-xs btn-primary">Bom</label></td>
+				</tr>
+				<tr>
+					<td>B-</td>
+					<td th:text="${totalBNegativo}"></td>
+					<td><a href="#" class="btn btn-xs btn-success">Ótimo</a></td>
+				</tr>
+				<tr>
+					<td>AB+</td>
+					<td th:text="${totalABPositivo}"></td>
+					<td><label class="btn btn-xs btn-success">Ótimo</label></td>
+				</tr>
+				<tr>
+					<td>AB-</td>
+					<td th:text="${totalABNegativo}"></td>
+					<td><a href="#" class="btn btn-xs btn-success">Ótimo</a></td>
+				</tr>
+				<tr>
 					<td>O-</td>
-					<td>24</td>
-					<td class="text-center">50%</td>
+					<td th:text="${totalONegativo}"></td>
 					<td><a href="#" class="btn btn-xs btn-success">Ótimo</a></td>
 				</tr>
 				<tr>
 					<td>O+</td>
-					<td>6</td>
-					<td class="text-center">10%</td>
+					<td th:text="${totalOPositivo}"></td>
 					<td><a href="#" class="btn btn-xs btn-warning">Baixo</a></td>
-				</tr>
-				<tr>
-					<td>A+</td>
-					<td>10</td>
-					<td class="text-center">20%</td>
-					<td><a href="#" class="btn btn-xs btn-primary">Bom</a></td>
-				</tr>
-				<tr>
-					<td>A-</td>
-					<td>5</td>
-					<td class="text-center">10%</td>
-					<td><a href="#" class="btn btn-xs btn-danger">Crítico</a></td>
-				</tr>
-				<tr>
-					<td>AB-</td>
-					<td>5</td>
-					<td class="text-center">10%</td>
-					<td><a href="#" class="btn btn-xs btn-danger">Crítico</a></td>
 				</tr>
 			</tbody>
 			<tfoot>
 				<tr>
 					<th>TOTAL</th>
 					<th>50</th>
-					<th></th>
 					<th></th>
 				</tr>
 			</tfoot>
@@ -75,8 +83,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="tipo : ${tipoSanguineos}">
-					<td th:text="${tipo.descricao}"></td>
+				<tr th:each="bolsa : ${estoque}">
+					<td th:text="${bolsa}"></td>
 				</tr>
 			</tbody>
 		</table>
