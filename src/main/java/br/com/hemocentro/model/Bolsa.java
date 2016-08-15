@@ -20,6 +20,10 @@ public class Bolsa {
 
 	@ManyToOne
 	private Situacao situacao;
+	
+	public boolean isDescarte() {
+		return situacao.equals("expurgada");
+	}
 
 	public Long getCodigo() {
 		return codigo;
