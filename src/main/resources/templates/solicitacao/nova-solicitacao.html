@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+
+<head>
+<title>Solicitação</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<form method="POST" th:object="${solicitacao}"
+		class="form-horizontal  js-form-loading"
+		action="/solicitacao">
+
+		<div layout:include="mensagem"></div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<div class="clearfix">
+					<h1 class="panel-title aw-titulo-panel">
+						<span class="glyphicon glyphicon-envelope"></span> Nova
+						Solicitação
+					</h1>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('sangue')} ? 'has-error'">
+					<label for="sangue" class="col-sm-2">Quantidade Bolsa de Sangue</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" id="sangue"
+							th:field="*{sangue}" />
+					</div>
+				</div>
+
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('hemacias')} ? 'has-error'">
+					<label for="hemacias" class="col-sm-2">Quantidade de
+						Hemacias</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" id="hemacias"
+							th:field="*{hemacias}" />
+					</div>
+				</div>
+
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('plaquetas')} ? 'has-error'">
+					<label for="plaquetas" class="col-sm-2">Quantidade de
+						Plaquetas</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" id="plaquetas"
+							th:field="*{plaquetas}" />
+					</div>
+				</div>
+
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('plasma')} ? 'has-error'">
+					<label for="plasma" class="col-sm-2">Quantidade de Plasma</label>
+					<div class="col-sm-2">
+						<input type="number" class="form-control" id="plasma"
+							th:field="*{plasma}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">
+							<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+							Salvar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+
+</section>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+
+<head>
+<title>Solicitações</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="row">
+		<div class="col-md-12">
+
+			<div class="text-center alert alert-success"
+				th:if="${!#strings.isEmpty(mensagem)}">
+				<span th:text="${mensagem}"></span>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="clearfix">
+						<h1 class="panel-title pull-left aw-titulo-panel"><span class="glyphicon glyphicon-envelope"></span> Solicitações</h1>
+					</div>
+				</div>
+
+				<div class="panel-body">
+					<table class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th class="col-md-2">qtd. Sangue</th>
+								<th class="col-md-2">qtd. Hemacias</th>
+								<th class="col-md-2">qtd. Plaquetas</th>
+								<th class="col-md-2">qtd. Plasma</th>
+								<th class="col-md-1"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="solicitacao : ${solicitacoes}">
+								<td th:text="${solicitacao.sangue}"></td>
+								<td th:text="${solicitacao.hemacias}"></td>
+								<td th:text="${solicitacao.plaquetas}"></td>
+								<td th:text="${solicitacao.plasma}"></td>
+								<td></td>
+							</tr>
+
+							<tr>
+								<td colspan="6" th:if="${solicitacoes.empty}">Nenhuma
+									solicitação no momento</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+</html>
