@@ -18,4 +18,7 @@ public interface IBolsaRepository extends JpaRepository<Bolsa, Long> {
 	
 	Long countByTipoSanguineo(TipoSanguineo tipoSanguineo);
 	
+	@Query("select count(b) from Bolsa b where b.setor = 2")
+	Long countByBolsa();
+	
 }
