@@ -105,4 +105,10 @@ public class IndexController {
 		Long total = bolsaRepository.countByTipoSanguineo(TipoSanguineo.O_NEGATIVO);
 		return total;
 	}
+	
+	@ModelAttribute("sangueTotal")
+	public Long sangueTotal() {
+		Long total = bolsaRepository.countByBolsa();
+		return total;
+	}
 }
